@@ -8,11 +8,21 @@ import Encoder from './Encoder';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [histo, setHisto]= React.useState({});
+
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Decoder" component={Decoder} />
+        <Tab.Screen name="Home"  children={()=>{
+          return(
+            <HomeScreen histo={histo} setHisto= {setHisto} />
+          )
+        }} />
+        <Tab.Screen name="Decoder" children={()=>{
+          return(
+            <Decoder histo={histo} setHisto= {setHisto} />
+          )
+        }} />
         <Tab.Screen name="Encoder" component={Encoder} />
       </Tab.Navigator>
     </NavigationContainer>

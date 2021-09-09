@@ -1,10 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
+
+  console.log(props);
+  function displayHistory(){
+    return Object.keys(props.histo).map((key)=>{
+
+        return(
+          <Text>{props.histo[key]} {"\n"}</Text>
+        )}
+
+    )
+}
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
+      {displayHistory()}
     </View>
   );
 }
